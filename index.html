@@ -3,178 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AgroGestión 360 — Demo</title>
+  <title>AgroGestión 360</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body> 
+<body>
   <header class="topbar">
     <div class="brand">
-      <div class="logo" aria-hidden="true">🌿📈</div>
-      <div>
-        <h1>AgroGestión <span class="titulo">360</span></h1>
-        <p class="subtitulo">Maquinaria · Ganadería · Costos de Siembra · Bolsa</p>
-      </div>
+      <h1>AgroGestión <span class="accent">360</span></h1>
     </div>
-    <nav class="tabs" aria-label="Secciones principales">
+    <nav class="tabs">
       <button class="tab active" data-target="#maquinaria">Maquinaria</button>
       <button class="tab" data-target="#ganaderia">Ganadería</button>
-      <button class="tab" data-target="#siembra">Calculadora Siembra</button>
-      <button class="tab" data-target="#bolsa">Bolsa de Valores</button>
+      <button class="tab" data-target="#siembra">Calculadora</button>
+      <button class="tab" data-target="#bolsa">Bolsa</button>
     </nav>
   </header>
 
-  <main class="wrapper"> <!--CENTRADO DE COSAS DENTRO DE LA APLICACION-->
+  <main class="wrapper">
     <!-- Maquinaria -->
-    <section id="maquinaria" class="panel active" aria-labelledby="tab-maquinaria">
-      <h2>Organizador &amp; Mercado de Maquinaria</h2>
-      <form id="machinery-form" class="card form-grid" autocomplete="off">
-        <div class="field">
-          <label for="m-name">Nombre</label>
-          <input id="m-name" name="name" required placeholder="Ej: Sembradora John Deere 1590" />
-        </div>
-        <div class="field">
-          <label for="m-type">Tipo</label>
-          <select id="m-type" name="type" required>
-            <option value="">Seleccionar…</option>
-            <option>Tractor</option>
-            <option>Cosechadora</option>
-            <option>Sembradora</option>
-            <option>Fumigadora</option>
-            <option>Herramienta</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="m-condition">Estado</label>
-          <select id="m-condition" name="condition" required>
-            <option value="">Seleccionar…</option>
-            <option>Nuevo</option>
-            <option>Usado - Excelente</option>
-            <option>Usado - Bueno</option>
-            <option>Usado - A reparar</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="m-price">Precio (USD)</label>
-          <input id="m-price" name="price" type="number" min="0" step="0.01" placeholder="0.00" required />
-        </div>
-        <div class="field span-2">
-          <label for="m-notes">Notas</label>
-          <input id="m-notes" name="notes" placeholder="Horas de uso, modelo, extras…" />
-        </div>
-        <button class="btn primary" type="submit">Agregar a Inventario</button>
+    <section id="maquinaria" class="panel active">
+      <h2>Organizador de Maquinaria</h2>
+      <form id="machinery-form" class="card">
+        <input id="m-name" placeholder="Nombre" required />
+        <select id="m-type" required>
+          <option value="">Tipo…</option>
+          <option>Tractor</option><option>Cosechadora</option>
+          <option>Sembradora</option><option>Otro</option>
+        </select>
+        <select id="m-condition" required>
+          <option value="">Estado…</option>
+          <option>Nuevo</option><option>Usado</option>
+        </select>
+        <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required />
+        <input id="m-notes" placeholder="Notas" />
+        <button type="submit" class="btn primary">Agregar</button>
       </form>
-
-      <div class="toolbar card">
-        <div class="filters">
-          <label>Filtrar por estado:
-            <select id="status-filter">
-              <option value="todos">Todos</option>
-              <option value="inventario">Inventario</option>
-              <option value="venta">En venta</option>
-              <option value="vendido">Vendido</option>
-              <option value="comprado">Comprado</option>
-            </select>
-          </label>
-          <label>Búsqueda: <input id="search-machinery" placeholder="Buscar por nombre o tipo" /></label>
-        </div>
-      </div>
-
       <ul id="machinery-list" class="grid"></ul>
       <div id="machinery-empty" class="muted">No hay maquinaria cargada.</div>
     </section>
 
     <!-- Ganadería -->
-    <section id="ganaderia" class="panel" aria-labelledby="tab-ganaderia">
+    <section id="ganaderia" class="panel">
       <h2>Conteo de Animales</h2>
-      <form id="breed-form" class="card form-grid">
-          <div class="field">
-          <label for="m-type">Tipo</label>
-          <select id="m-type" name="type" required>
-            <option value="">Seleccionar…</option>
-            <option>Vaca</option>
-            <option>Toro</option>
-            <option>Oveja</option>
-            <option>Carnero</option>
-            <option>Gallina</option>
-            <option>Otro</option>
-          </select>
-          <div class="field">
-          <label for="m-name">Raza</label>
-          <input id="m-name" name="name" required placeholder="Ej: Angus, Brangus, Braford" autocomplete="off" /> 
-        </div>
-        </div>
-        <div class="field">
-          <label for="b-initial">Cantidad inicial</label>
-          <input id="b-initial" type="number" min="0" value="0" />
-        </div>
-        <button class="btn primary" type="submit">Agregar Animal</button>
+      <form id="breed-form" class="card">
+        <select id="b-type" required>
+          <option value="">Tipo…</option>
+          <option>Vaca</option><option>Toro</option>
+          <option>Oveja</option><option>Gallina</option>
+        </select>
+        <input id="b-name" placeholder="Raza" required />
+        <input id="b-initial" type="number" min="0" value="0" />
+        <button type="submit" class="btn primary">Agregar</button>
       </form>
-
-      <div class="card">
-        <div class="stats">
-          <div><strong>Total animales:</strong> <span id="total-animals">0</span></div>
-          <div><strong>Animales registrados:</strong> <span id="total-breeds">0</span></div>
-        </div>
-      </div>
-
       <ul id="breeds-list" class="grid"></ul>
       <div id="breeds-empty" class="muted">No hay razas registradas.</div>
     </section>
 
-    <!-- Calculadora Siembra -->
-    <section id="siembra" class="panel" aria-labelledby="tab-siembra">
-      <h2>Calculadora de Costos de Siembra (USD)</h2>
-      <form id="calc-form" class="card form-grid">
-        <div class="field">
-          <label for="hectareas">Hectáreas</label>
-          <input id="hectareas" type="number" min="0" step="0.01" required />
-        </div>
-        <div class="field">
-          <label for="densidad">Dosis semilla (tn/ha)</label>
-          <input id="densidad" type="number" min="0" step="0.01" required />
-        </div>
-        <div class="field">
-          <label for="precio-semilla">Precio semilla (USD/tn)</label>
-          <input id="precio-semilla" type="number" min="0" step="0.01" required />
-        </div>
-        <div class="field">
-          <label for="fertil">Fertilizante (USD/ha)</label>
-          <input id="fertil" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <div class="field">
-          <label for="labores">Labores (USD/ha)</label>
-          <input id="labores" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <div class="field">
-          <label for="combustible">Combustible (USD/ha)</label>
-          <input id="combustible" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <div class="field">
-          <label for="otros">Otros (USD/ha)</label>
-          <input id="otros" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <div class="field">
-          <label for="rendimiento">Rendimiento esperado (t/ha)</label>
-          <input id="rendimiento" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <div class="field">
-          <label for="precio-grano">Precio de semilla (USD/t)</label>
-          <input id="precio-grano" type="number" min="0" step="0.01" value="0" />
-        </div>
-        <button class="btn primary" type="submit">Calcular</button>
-        <button class="btn" type="reset">Limpiar</button>
+    <!-- Calculadora -->
+    <section id="siembra" class="panel">
+      <h2>Calculadora de Costos de Siembra</h2>
+      <form id="calc-form" class="card">
+        <input id="hectareas" type="number" placeholder="Hectáreas" min="0" required />
+        <input id="densidad" type="number" placeholder="Dosis (kg/ha)" min="0" required />
+        <input id="precio-semilla" type="number" placeholder="Precio semilla (USD/kg)" min="0" required />
+        <input id="fertil" type="number" placeholder="Fertilizante (USD/ha)" min="0" />
+        <input id="labores" type="number" placeholder="Labores (USD/ha)" min="0" />
+        <input id="combustible" type="number" placeholder="Combustible (USD/ha)" min="0" />
+        <input id="otros" type="number" placeholder="Otros (USD/ha)" min="0" />
+        <input id="rendimiento" type="number" placeholder="Rendimiento (t/ha)" min="0" />
+        <input id="precio-grano" type="number" placeholder="Precio grano (USD/t)" min="0" />
+        <button type="submit" class="btn primary">Calcular</button>
       </form>
-
-      <div id="calc-results" class="card results" aria-live="polite"></div> <!-- POLITE PARA QUE NO SEA TAN INTRUSIVO, SOLO AVISE CUANDO TERMINE DE CALCULAR -->
+      <div id="calc-results" class="card"></div>
     </section>
 
     <!-- Bolsa -->
-    <section id="bolsa" class="panel" aria-labelledby="tab-bolsa">
+    <section id="bolsa" class="panel">
       <h2>Bolsa de Valores</h2>
-        <div class="field">
-        <a href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener" class="btn">Ver precios oficiales de la bolsa de Rosario</a>
-        <a href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener" class="btn">Ver precios oficiales de la bolsa de Córdoba</a>
+      <div class="card">
+        <a href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener" class="btn primary">Bolsa Rosario</a>
+        <a href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener" class="btn primary">Bolsa Córdoba</a>
       </div>
     </section>
   </main>
