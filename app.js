@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <strong>${m.name}</strong> (${m.type}) - ${m.condition} - USD ${m.price}<br>
         <small>${m.notes || ""}</small><br>
         <div class="actions">
-          <button class="btn" data-action="inventario">Inventario</button>
+          <button class="btn" data-action="nuevo">Nuevo</button>
+          <button class="btn" data-action="usado">Usado</button>
+          <button class="btn" data-action="reparacion">En reparación</button>
           <button class="btn" data-action="venta">Venta</button>
           <button class="btn" data-action="vendido">Vendido</button>
           <button class="btn" data-action="eliminar">Eliminar</button>

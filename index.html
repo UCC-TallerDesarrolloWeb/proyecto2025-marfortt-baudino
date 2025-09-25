@@ -1,4 +1,4 @@
-
+<--! HOLA MUNDO! -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,13 +27,18 @@
       <form id="machinery-form" class="card">
         <input id="m-name" placeholder="Nombre" required />
         <select id="m-type" required>
-          <option value="">Tipo…</option>
-          <option>Tractor</option><option>Cosechadora</option>
-          <option>Sembradora</option><option>Otro</option>
+          <option value="">Tipo</option>
+          <option>Tractor</option>
+          <option>Cosechadora</option>
+          <option>Sembradora</option>
+          <option>Otro</option>
         </select>
         <select id="m-condition" required>
-          <option value="">Estado…</option>
-          <option>Nuevo</option><option>Usado</option>
+          <option value="">Estado</option>
+          <option>Nuevo</option>
+          <option>Usado</option>
+          <option>En reparación</option>
+          <option>Otro</option>
         </select>
         <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required />
         <input id="m-notes" placeholder="Notas" />
@@ -49,8 +54,10 @@
       <form id="breed-form" class="card">
         <select id="b-type" required>
           <option value="">Tipo…</option>
-          <option>Vaca</option><option>Toro</option>
-          <option>Oveja</option><option>Gallina</option>
+          <option>Vaca</option>
+          <option>Toro</option>
+          <option>Oveja</option>
+          <option>Gallina</option>
         </select>
         <input id="b-name" placeholder="Raza" required />
         <input id="b-initial" type="number" min="0" value="0" />
@@ -66,13 +73,14 @@
       <form id="calc-form" class="card">
         <input id="hectareas" type="number" placeholder="Hectáreas" min="0" required />
         <input id="densidad" type="number" placeholder="Dosis (kg/ha)" min="0" required />
-        <input id="precio-semilla" type="number" placeholder="Precio semilla (USD/kg)" min="0" required />
-        <input id="fertil" type="number" placeholder="Fertilizante (USD/ha)" min="0" />
+        <input id="precio-semilla" type="number" placeholder="Precio semilla (USD/t)" min="0" required />
+        <input id="fertil" type="number" placeholder="Fertilizante (USD)" min="0" />
         <input id="labores" type="number" placeholder="Labores (USD/ha)" min="0" />
-        <input id="combustible" type="number" placeholder="Combustible (USD/ha)" min="0" />
+        <input id="combustible" type="number" placeholder="Combustible (USD)" min="0" />
         <input id="otros" type="number" placeholder="Otros (USD/ha)" min="0" />
         <input id="rendimiento" type="number" placeholder="Rendimiento (t/ha)" min="0" />
         <input id="precio-grano" type="number" placeholder="Precio grano (USD/t)" min="0" />
+
         <button type="submit" class="btn primary">Calcular</button>
       </form>
       <div id="calc-results" class="card"></div>
