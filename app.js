@@ -1,19 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const $ = sel => document.querySelector(sel);
-  const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-  // Navegación entre tabs
-  $$(".tab").forEach(btn => {
-    btn.addEventListener("click", () => {
-      $$(".tab").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      $$(".panel").forEach(p => p.classList.remove("active"));
-      $(btn.dataset.target).classList.add("active");
-    });
-  });
-
-  // ===== Maquinaria =====
+  // ==== Maquinaria ====
   let machinery = [];
   const machineryForm = $("#machinery-form");
   const machineryList = $("#machinery-list");
@@ -29,21 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
       li.innerHTML = `
         <strong>${m.name}</strong> (${m.type}) - ${m.condition} - USD ${m.price}<br>
         <small>${m.notes || ""}</small><br>
-        <div class="actions">
-          <button class="btn" data-action="nuevo">Nuevo</button>
-          <button class="btn" data-action="usado">Usado</button>
-          <button class="btn" data-action="reparacion">En reparación</button>
-          <button class="btn" data-action="venta">Venta</button>
-          <button class="btn" data-action="vendido">Vendido</button>
-          <button class="btn" data-action="eliminar">Eliminar</button>
-        </div>
+        <button class="btn" data-action="eliminar">Eliminar</button>
       `;
       li.addEventListener("click", e => {
-        const act = e.target.dataset.action;
-        if (!act) return;
-        if (act === "eliminar") machinery = machinery.filter(x => x !== m);
-        else m.condition = act;
-        renderMachinery();
+        if (e.target.dataset.action === "eliminar") {
+          machinery = machinery.filter(x => x !== m);
+          renderMachinery();
+        }
       });
       machineryList.appendChild(li);
     });
@@ -52,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
   machineryForm.addEventListener("submit", e => {
     e.preventDefault();
     machinery.push({
-      id: crypto.randomUUID(),
       name: $("#m-name").value,
       type: $("#m-type").value,
       condition: $("#m-condition").value,
@@ -63,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMachinery();
   });
 
-  // ===== Ganadería =====
+  // ==== Ganadería ====
   let breeds = [];
   const breedForm = $("#breed-form");
   const breedsList = $("#breeds-list");
@@ -78,19 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
       li.className = "item";
       li.innerHTML = `
         <strong>${b.type}</strong> - ${b.name}: ${b.count}
-        <div class="actions">
-          <button class="btn" data-action="inc">+1</button>
-          <button class="btn" data-action="dec">-1</button>
-          <button class="btn" data-action="reset">Reset</button>
-          <button class="btn" data-action="del">Eliminar</button>
-        </div>
+        <button class="btn" data-action="inc">+1</button>
+        <button class="btn" data-action="dec">-1</button>
+        <button class="btn" data-action="del">Eliminar</button>
       `;
       li.addEventListener("click", e => {
         const act = e.target.dataset.action;
-        if (!act) return;
         if (act === "inc") b.count++;
         if (act === "dec") b.count = Math.max(0, b.count - 1);
-        if (act === "reset") b.count = 0;
         if (act === "del") breeds = breeds.filter(x => x !== b);
         renderBreeds();
       });
@@ -101,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   breedForm.addEventListener("submit", e => {
     e.preventDefault();
     breeds.push({
-      id: crypto.randomUUID(),
       type: $("#b-type").value,
       name: $("#b-name").value,
       count: Number($("#b-initial").value)
@@ -110,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderBreeds();
   });
 
-  // ===== Calculadora =====
+  // ==== Calculadora ====
   const calcForm = $("#calc-form");
   const calcResults = $("#calc-results");
 
@@ -139,3 +112,4 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   });
 });
+

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AgroGestión 360</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="logo">🌿 AgroGestión <span class="accent">360</span></div>
     <nav class="main-nav">
@@ -18,72 +19,100 @@
     </nav>
   </header>
 
+  <!-- ===== Hero ===== -->
   <section id="inicio" class="hero">
-    <h1>Bienvenido a AgroGestión 360</h1>
-    <p>Un sistema integral para organizar maquinaria, registrar animales y calcular costos de siembra.</p>
-  </section>
+    <div class="overlay">
+    <h1>AgroGestión 360</h1>
+    <p>Gestión integral para maquinaria, animales y costos de siembra en un solo lugar.</p>
+  </section></div>
 
+  <!-- ===== Maquinaria ===== -->
   <section id="maquinaria" class="section">
     <h2>Organizador de Maquinaria</h2>
     <form id="machinery-form" class="card">
-      <input id="m-name" placeholder="Nombre" required />
+      <input id="m-name" placeholder="Nombre" required>
       <select id="m-type" required>
-        <option value="">Tipo…</option><option>Tractor</option><option>Cosechadora</option>
-        <option>Sembradora</option><option>Otro</option>
+        <option value="">Tipo…</option>
+        <option>Tractor</option>
+        <option>Cosechadora</option>
+        <option>Sembradora</option>
+        <option>Otro</option>
       </select>
       <select id="m-condition" required>
-        <option value="">Estado…</option><option>Nuevo</option><option>Usado</option>
+        <option value="">Estado…</option>
+        <option>Nuevo</option>
+        <option>Usado</option>
       </select>
-      <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required />
-      <input id="m-notes" placeholder="Notas" />
+      <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required>
+      <input id="m-notes" placeholder="Notas">
       <button type="submit" class="btn primary">Agregar</button>
     </form>
     <ul id="machinery-list" class="grid"></ul>
     <div id="machinery-empty" class="muted">No hay maquinaria cargada.</div>
   </section>
 
+  <!-- ===== Ganadería ===== -->
   <section id="ganaderia" class="section">
     <h2>Registro de Ganadería</h2>
     <form id="breed-form" class="card">
       <select id="b-type" required>
-        <option value="">Tipo…</option><option>Vaca</option><option>Toro</option>
-        <option>Oveja</option><option>Gallina</option>
+        <option value="">Tipo…</option>
+        <option>Vaca</option>
+        <option>Toro</option>
+        <option>Oveja</option>
+        <option>Gallina</option>
       </select>
-      <input id="b-name" placeholder="Raza" required />
-      <input id="b-initial" type="number" min="0" value="0" />
+      <input id="b-name" placeholder="Raza" required>
+      <input id="b-initial" type="number" min="0" value="0">
       <button type="submit" class="btn primary">Agregar</button>
     </form>
     <ul id="breeds-list" class="grid"></ul>
     <div id="breeds-empty" class="muted">No hay razas registradas.</div>
   </section>
 
+  <!-- ===== Calculadora ===== -->
   <section id="siembra" class="section">
     <h2>Calculadora de Costos de Siembra</h2>
     <form id="calc-form" class="card">
-      <input id="hectareas" type="number" placeholder="Hectáreas" min="0" required />
-      <input id="densidad" type="number" placeholder="Dosis (kg/ha)" min="0" required />
-      <input id="precio-semilla" type="number" placeholder="Precio semilla (USD/kg)" min="0" required />
-      <input id="fertil" type="number" placeholder="Fertilizante (USD/ha)" min="0" />
-      <input id="labores" type="number" placeholder="Labores (USD/ha)" min="0" />
-      <input id="combustible" type="number" placeholder="Combustible (USD/ha)" min="0" />
-      <input id="otros" type="number" placeholder="Otros (USD/ha)" min="0" />
-      <input id="rendimiento" type="number" placeholder="Rendimiento (t/ha)" min="0" />
-      <input id="precio-grano" type="number" placeholder="Precio grano (USD/t)" min="0" />
+      <input id="hectareas" type="number" placeholder="Hectáreas" min="0" required>
+      <input id="densidad" type="number" placeholder="Dosis (kg/ha)" min="0" required>
+      <input id="precio-semilla" type="number" placeholder="Precio semilla (USD/kg)" min="0" required>
+      <input id="fertil" type="number" placeholder="Fertilizante (USD/ha)" min="0">
+      <input id="labores" type="number" placeholder="Labores (USD/ha)" min="0">
+      <input id="combustible" type="number" placeholder="Combustible (USD/ha)" min="0">
+      <input id="otros" type="number" placeholder="Otros (USD/ha)" min="0">
+      <input id="rendimiento" type="number" placeholder="Rendimiento (t/ha)" min="0">
+      <input id="precio-grano" type="number" placeholder="Precio grano (USD/t)" min="0">
       <button type="submit" class="btn primary">Calcular</button>
     </form>
     <div id="calc-results" class="card"></div>
   </section>
 
+  <!-- ===== Bolsa ===== -->
   <section id="bolsa" class="section">
     <h2>Bolsa de Valores</h2>
-    <div class="card">
-      <a href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener" class="btn primary">Bolsa Rosario</a>
-      <a href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener" class="btn primary">Bolsa Córdoba</a>
+    <div class="preview-grid">
+      <a class="preview-card" href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener">
+        <img src="imagenes/preview-rosario.jpg" alt="Bolsa de Rosario">
+        <div class="preview-info">
+          <h3>Bolsa de Rosario</h3>
+          <p>Ver precios de pizarra actualizados</p>
+        </div>
+      </a>
+
+      <a class="preview-card" href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener">
+        <img src="imagenes/preview-cordoba.jpg" alt="Bolsa de Córdoba">
+        <div class="preview-info">
+          <h3>Bolsa de Córdoba</h3>
+          <p>Consultar pizarras por cultivo</p>
+        </div>
+      </a>
     </div>
   </section>
 
+  <!-- ===== Footer ===== -->
   <footer class="footer">
-    <p>© 2025 AgroGestión 360 · Proyecto académico de Ingeniería Informática</p>
+    <p>© 2025 AgroGestión 360 · Proyecto académico</p>
   </footer>
 
   <script src="app.js"></script>
