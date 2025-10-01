@@ -5,24 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AgroGestión 360</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="./images/icono de agrogestion.png" >
 </head>
 <body>
   <!-- ===== Header ===== -->
   <header class="site-header">
-    <div class="logo">🌿 AgroGestión <span class="accent">360</span></div>
+    <div class="logo"> AgroGestión <span class="accent">360</span></div>
     <nav class="main-nav">
       <a href="#inicio">Inicio</a>
       <a href="#maquinaria">Maquinaria</a>
       <a href="#ganaderia">Ganadería</a>
       <a href="#siembra">Calculadora</a>
-      <a href="#bolsa">Bolsa</a>
+      <a href="#bolsa">Bolsa De Valores</a>
     </nav>
   </header>
 
   <!-- ===== Hero ===== -->
   <section id="inicio" class="hero">
     <div class="overlay">
-    <h1>AgroGestión 360</h1>
+    <h1>🌿 AgroGestión 360</h1>
     <p>Gestión integral para maquinaria, animales y costos de siembra en un solo lugar.</p>
   </section></div>
 
@@ -34,14 +35,17 @@
       <select id="m-type" required>
         <option value="">Tipo…</option>
         <option>Tractor</option>
-        <option>Cosechadora</option>
+        <option>Arado</option>
         <option>Sembradora</option>
-        <option>Otro</option>
+        <option>Pulverizadoras</option>
+        <option>Cosechadoras</option>
+        <option>Mixer</option>
+        <option>Cabezal (poner que tipo es en las notas)</option>
       </select>
       <select id="m-condition" required>
         <option value="">Estado…</option>
-        <option>Nuevo</option>
-        <option>Usado</option>
+        <option>Activo</option>
+        <option>Inactivo</option>
       </select>
       <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required>
       <input id="m-notes" placeholder="Notas">
@@ -61,6 +65,8 @@
         <option>Toro</option>
         <option>Oveja</option>
         <option>Gallina</option>
+        <option>Cerdo</option>
+        <option>Caballo</option>
       </select>
       <input id="b-name" placeholder="Raza" required>
       <input id="b-initial" type="number" min="0" value="0">
@@ -93,15 +99,15 @@
     <h2>Bolsa de Valores</h2>
     <div class="preview-grid">
       <a class="preview-card" href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener">
-        <img src="imagenes/preview-rosario.jpg" alt="Bolsa de Rosario">
+        <img src="./images/logo rosario.png" alt="Bolsa de Rosario">
         <div class="preview-info">
           <h3>Bolsa de Rosario</h3>
           <p>Ver precios de pizarra actualizados</p>
         </div>
       </a>
 
-      <a class="preview-card" href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener">
-        <img src="imagenes/preview-cordoba.jpg" alt="Bolsa de Córdoba">
+      <a class="preview-card" href="https://www.bccba.org.ar/" target="_blank" rel="noopener">
+        <img src="./images/logo cba .png" alt="Bolsa de Córdoba">
         <div class="preview-info">
           <h3>Bolsa de Córdoba</h3>
           <p>Consultar pizarras por cultivo</p>
@@ -112,7 +118,7 @@
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
-    <p>© 2025 AgroGestión 360 · Proyecto académico</p>
+    <p>© 2025 AgroGestión 360 </p>
   </footer>
 
   <script src="app.js"></script>
