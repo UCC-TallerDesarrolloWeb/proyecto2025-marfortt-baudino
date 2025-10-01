@@ -1,10 +1,15 @@
-body { margin:0; font-family:sans-serif; background:#f8f9fa; color:#222; }
+body { 
+  margin:0; 
+  font-family:sans-serif; 
+  background:#f8f9fa; 
+  color:#222; 
+}
 .site-header { position:sticky; top:0; background:#0f1720; color:#fff;
   display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
 .logo { font-weight:bold; font-size:1.2rem; }
 .accent { color:#77e38e; }
 .main-nav a { margin:0 10px; color:#fff; text-decoration:none; }
-.main-nav a:hover { text-decoration:underline; }
+
 
 .hero { padding:60px 20px; text-align:center; background:#ffffff; }
 
@@ -17,6 +22,19 @@ body { margin:0; font-family:sans-serif; background:#f8f9fa; color:#222; }
   height: 100%;
 }
 
+
+.section {
+  margin: 0 auto;
+  max-width: 900px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgb(40, 99, 28);
+  border-radius: 25px;
+  margin-bottom: 30px;
+}
+
+
+
+
 .hero .overlay {
   background: rgba(0,0,0,0.6);
   color: #fff;
@@ -25,14 +43,30 @@ body { margin:0; font-family:sans-serif; background:#f8f9fa; color:#222; }
   border-radius: 12px;
 }
 
-.btn { display:inline-block; padding:8px 14px; border-radius:6px; border:1px solid #444; background:#fff; color:#000; cursor:pointer; margin:2px; text-decoration:none; }
-.btn.primary { background:#77e38e; border-color:#5fc371; font-weight:bold; }
-.btn:hover { background:#ddd; }
+.btn { 
+  display:inline-block; 
+  padding:10px 14px; 
+  border-radius:10000px;  /* redondeo de borde */
+  border:1px solid #444; 
+  background:#fff; 
+  color:#000;  
+  margin:2px; 
+}
+
+.btn.primary { 
+  background:#64d87d; 
+  border-color:#000000; 
+  font-weight:bold;
+}
+
+.btn:hover { 
+  background:#ddd; 
+}
 
 input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px solid #ccc; border-radius:6px; }
 .muted { color:#777; }
 
-.footer { background:#0f1720; color:#ccc; padding:20px; text-align:center; }
+.footer { background:#207f17; color:#ffffff; padding:20px; text-align:center; }
 .footer a { color:#77e38e; }
 
 .preview-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; }
@@ -44,5 +78,3 @@ input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px
 .preview-info { padding:10px 12px; }
 .preview-info h3 { margin:0 0 4px 0; font-size:1.05rem; }
 .preview-info p { margin:0; color:#666; font-size:.95rem; }
-
-
