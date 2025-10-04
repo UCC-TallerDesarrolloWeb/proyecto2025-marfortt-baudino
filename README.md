@@ -1,5 +1,109 @@
-# proyecto2025
-Estructura de Proyecto Taller de Desarrollo Web - 2025
+# AgroGestión 360
+
+**Sistema integral de gestión agropecuaria** - Taller de Desarrollo Web 2025
+
+## 📋 Índice
+- [Información del Proyecto](#información-del-proyecto)
+- [Autores](#autores)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Contenido de la Página](#contenido-de-la-página)
+- [Enlaces](#enlaces)
+- [Instalación y Uso](#instalación-y-uso)
+- [Requisitos del Parcial](#requisitos-del-primer-parcial)
+
+## Información del Proyecto
+
+**AgroGestión 360** es una aplicación web diseñada para la **gestión integral de actividades agropecuarias**. La plataforma permite a los usuarios administrar eficientemente su maquinaria agrícola, registrar su ganadería, calcular costos de siembra, consultar información meteorológica y acceder a bolsas de valores agrícolas.
+
+## Características Principales
+- **Gestión de Maquinaria**: Registro completo con fotos, precios y estados
+- **Control de Ganadería**: Inventario de animales por raza y tipo
+- **Calculadora de Costos**: Estimación de costos y utilidades de siembra
+- **Bolsa de Valores**: Enlaces directos a cotizaciones agrícolas
+- **Almacenamiento Local**: Persistencia de datos entre sesiones
+
+## Autores
+- **Marfortt, Renzo**
+- **Baudino, José**
+
+## Tecnologías Utilizadas
+
+| Categoría                | Tecnología   |Versión |
+|--------------------------|--------------|--------|
+| **Frontend**             | HTML5        | -      |
+| **Estilos**              | CSS3         | -      |
+| **JavaScript**           | Vanilla JS   |  ES6+  |
+| **Almacenamiento**       | localStorage | HTML5  |
+| **Control de Versiones** | Git & GitHub | -      |
+| **Deployment**           | GitHub Pages | -      |
+
+## 📱 Contenido de la Página
+
+### **Secciones Principales:**
+
+1. **Inicio**
+   - Presentación del sistema
+   - Navegación principal
+
+2. **Organizador de Maquinaria**
+   - Formulario de registro con carga de imágenes
+   - Lista dinámica con fotos y detalles
+   - Filtros por tipo y estado
+
+3. **Registro de Ganadería**
+   - Control de inventario por animal y raza
+   - Contadores dinámicos (+1, -1)
+   - Gestión de stock en tiempo real
+
+4. **Calculadora de Costos de Siembra**
+   - Cálculo automático de costos por hectárea
+   - Estimación de utilidades y rentabilidad
+   - Validación de campos numéricos
+
+5. **Bolsa de Valores**
+   - Enlaces a Bolsa de Rosario
+   - Enlaces a Bolsa de Córdoba
+   - Acceso directo a cotizaciones
+
+### **Funcionalidades Técnicas:**
+- ✅ **Validación de formularios** con mensajes de error
+- ✅ **Almacenamiento persistente** con localStorage
+- ✅ **Diseño responsivo** para desktop y móvil
+- ✅ **Documentación JSDoc** completa
+
+## Enlaces
+
+- **Sitio Web**: [AgroGestión 360 - GitHub Pages](https://ucc-tallerdesarrolloweb.github.io/proyecto2025-marfortt-baudino/)
+- **Repositorio**: [GitHub Repository](https://github.com/UCC-TallerDesarrolloWeb/proyecto2025-marfortt-baudino)
+
+## Instalación y Uso
+
+### **Requisitos Previos:**
+- Navegador web moderno (Chrome, Firefox, Safari, Edge)
+- Conexión a internet (para API del clima)
+
+### **Instrucciones:**
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/UCC-TallerDesarrolloWeb/proyecto2025-marfortt-baudino.git
+   ```
+
+2. **Navegar al directorio:**
+   ```bash
+   cd proyecto2025-marfortt-baudino
+   ```
+
+3. **Abrir en navegador:**
+   - Abrir `index.html` directamente en el navegador
+   - O usar un servidor local como Live Server
+
+### **Uso de la Aplicación:**
+1. **Maquinaria**: Completa el formulario y opcionalmente agrega una foto
+2. **Ganadería**: Selecciona tipo de animal, raza y cantidad inicial
+3. **Calculadora**: Ingresa los datos de hectáreas, costos y precios
+6. **Bolsa**: Haz clic en los enlaces para ver cotizaciones
+
+---
 
 ## Requisitos del Primer Parcial
 
@@ -60,7 +164,7 @@ Tener en cuenta:
 - [ ] Debe haber por lo menos una etiqueta ```<img>``` en la página.
 - [ ] La estructura de la página debe estar definida con ```<div></div>```
 - [ ] Debe contener al menos 3 elementos de tipo ```<input>``` o ```<select>``` ó ```<button>``` que le permitan al usuario ingresar valores para poder realizar un cálculo de un ejercicio.
-- [ ] Emplear el atributo [**placeholder**](U2_HTML_avanzado.html#/19) (mínimamente en 1 input)
+- [ ] Emplear el atributo [**placeholder**](U2_HTM  L_avanzado.html#/19) (mínimamente en 1 input)
 - [ ] Emplear el atributo **size** para que el tamaño de los inputs sea prolijo
 - [ ] Emplear el atributo **maxlength** para que el usurario no pueda ingresar valores "muy grandes"
 - [ ] No espaciar con excesivos ```<br>```. Utilizar márgenes, paddings, etc.

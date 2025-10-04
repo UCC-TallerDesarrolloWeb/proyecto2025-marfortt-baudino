@@ -5,62 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AgroGestión 360</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="./images/icono de agrogestion.png" >
 </head>
 <body>
   <!-- ===== Header ===== -->
   <header class="site-header">
-    <div class="logo">🌿 AgroGestión <span class="accent">360</span></div>
+    <div class="logo"> AgroGestión <span class="accent">360</span></div>
     <nav class="main-nav">
-      <a href="#inicio">Inicio</a>
+      <a href="./home.html">Inicio</a>
       <a href="#maquinaria">Maquinaria</a>
       <a href="#ganaderia">Ganadería</a>
       <a href="#siembra">Calculadora</a>
-      <a href="#bolsa">Bolsa</a>
+      <a href="#bolsa">Bolsa De Valores</a>
     </nav>
   </header>
 
   <!-- ===== Hero ===== -->
   <section id="inicio" class="hero">
     <div class="overlay">
-    <h1>AgroGestión 360</h1>
+    <h1>🌿 AgroGestión 360 🌿</h1>
     <p>Gestión integral para maquinaria, animales y costos de siembra en un solo lugar.</p>
   </section></div>
 
   <!-- ===== Maquinaria ===== -->
-  <section id="maquinaria" class="section">
-    <h2>Organizador de Maquinaria</h2>
-    <form id="machinery-form" class="card">
-      <input id="m-name" placeholder="Nombre" required>
-      <select id="m-type" required>
-        <option value="">Tipo…</option>
-        <option>Tractor</option>
-        <option>Cosechadora</option>
-        <option>Sembradora</option>
-        <option>Otro</option>
-      </select>
-      <select id="m-condition" required>
-        <option value="">Estado…</option>
-        <option>Nuevo</option>
-        <option>Usado</option>
-      </select>
-      <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required>
-      <input id="m-notes" placeholder="Notas">
-      <button type="submit" class="btn primary">Agregar</button>
-    </form>
-    <ul id="machinery-list" class="grid"></ul>
-    <div id="machinery-empty" class="muted">No hay maquinaria cargada.</div>
-  </section>
+<section id="maquinaria" class="section">
+  <h2>Organizador de Maquinaria</h2>
+  <form id="machinery-form" class="card" enctype="multipart/form-data">
+    <input id="m-name" placeholder="Nombre" required>
+    <select id="m-type" required>
+      <option value="">Seleccionar tipo</option>
+      <option>Tractor</option>
+      <option>Arado</option>
+      <option>Sembradora</option>
+      <option>Pulverizadoras</option>
+      <option>Cosechadoras</option>
+      <option>Mixer</option>
+      <option>Cabezal (poner que tipo es en las notas)</option>
+    </select>
+    <select id="m-condition" required>
+      <option value="">Estado…</option>
+      <option>Activo</option>
+      <option>Inactivo</option>
+    </select>
+
+    <input id="m-price" type="number" placeholder="Precio USD" min="0" step="0.01" required>
+    <input id="m-notes" placeholder="Notas">
+
+    <!-- campo para subir foto -->
+    <label for="m-photo" style="margin-top:6px; display:block; font-size:.95rem;">Foto (opcional)</label>
+    <input id="m-photo" type="file" accept="image/*">
+
+    <button type="submit" class="btn primary">Agregar</button>
+  </form>
+  <ul id="machinery-list" class="grid"></ul>
+  <div id="machinery-empty" class="muted">No hay maquinaria cargada.</div>
+</section>
+
 
   <!-- ===== Ganadería ===== -->
   <section id="ganaderia" class="section">
     <h2>Registro de Ganadería</h2>
     <form id="breed-form" class="card">
       <select id="b-type" required>
-        <option value="">Tipo…</option>
+        <option value="">Seleccionar animal</option>
         <option>Vaca</option>
         <option>Toro</option>
         <option>Oveja</option>
         <option>Gallina</option>
+        <option>Cerdo</option>
+        <option>Caballo</option>
       </select>
       <input id="b-name" placeholder="Raza" required>
       <input id="b-initial" type="number" min="0" value="0">
@@ -93,18 +106,18 @@
     <h2>Bolsa de Valores</h2>
     <div class="preview-grid">
       <a class="preview-card" href="https://www.cac.bcr.com.ar/es/precios-de-pizarra" target="_blank" rel="noopener">
-        <img src="imagenes/preview-rosario.jpg" alt="Bolsa de Rosario">
+        <img src="./images/logo rosario.png" alt="Bolsa de Rosario">
         <div class="preview-info">
           <h3>Bolsa de Rosario</h3>
-          <p>Ver precios de pizarra actualizados</p>
+          <p>Ver precios pizarra</p>
         </div>
       </a>
 
-      <a class="preview-card" href="https://www.bccba.org.ar/todas-las-pizzarras/" target="_blank" rel="noopener">
-        <img src="imagenes/preview-cordoba.jpg" alt="Bolsa de Córdoba">
+      <a class="preview-card" href="https://www.bccba.org.ar/" target="_blank" rel="noopener">
+        <img src="./images/logo cba .png" alt="Bolsa de Córdoba">
         <div class="preview-info">
           <h3>Bolsa de Córdoba</h3>
-          <p>Consultar pizarras por cultivo</p>
+          <p>Ver precios pizarra</p>
         </div>
       </a>
     </div>
@@ -112,7 +125,7 @@
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
-    <p>© 2025 AgroGestión 360 · Proyecto académico</p>
+    <p>© 2025 AgroGestión 360 </p>
   </footer>
 
   <script src="app.js"></script>
