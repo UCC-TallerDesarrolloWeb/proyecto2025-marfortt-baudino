@@ -6,9 +6,26 @@ body {
 }
 .site-header { position:sticky; top:0; background:#0f1720; color:#fff;
   display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+
+.user-info {
+  color: #77e38e;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
 .logo { font-weight:bold; font-size:1.2rem; }
 .accent { color:#77e38e; }
 .main-nav a { margin:0 10px; color:#fff; text-decoration:none; }
+
+.logout-btn {
+  background: rgba(255, 107, 107, 0.8) !important;
+  padding: 5px 10px !important;
+  border-radius: 15px !important;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 107, 107, 1) !important;
+}
 
 
 .hero { padding:60px 20px; text-align:center; background:#ffffff; }

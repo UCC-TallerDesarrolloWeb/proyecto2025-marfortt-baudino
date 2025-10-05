@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /**
+   * Función selectora abreviada para document.querySelector
+   * @method $
+   * @param {string} sel - Selector CSS del elemento a buscar
+   * @returns {HTMLElement} Elemento DOM encontrado
+   */
   const $ = (sel) => document.querySelector(sel);
 
   /**
@@ -48,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * Carga los datos de ganadería desde localStorage
+   * Carga los datos de ganadería desde localStorage y los asigna al array breeds
    * @method loadBreedsFromStorage
    */
   const loadBreedsFromStorage = () => {
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const machineryEmpty = $("#machinery-empty");
 
   /**
-   * Renderiza la lista de maquinaria cargada
+   * Renderiza la lista de maquinaria cargada en el DOM, incluyendo fotos y botones de eliminación
    * @method renderMachinery
    */
   const renderMachinery = () => {
@@ -103,7 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  machineryForm.addEventListener("submit", (e) => {
+  /**
+   * Maneja el envío del formulario de maquinaria, incluyendo carga de imágenes
+   * @method handleMachinerySubmit
+   * @param {Event} e - Evento de envío del formulario
+   */
+  const handleMachinerySubmit = (e) => {
     e.preventDefault();
 
     const price = validarNumero($("#m-price"));
@@ -140,7 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
       machineryForm.reset();
       renderMachinery();
     }
-  });
+  };
+
+  machineryForm.addEventListener("submit", handleMachinerySubmit);
 
   // ================== GANADERÍA ==================
   let breeds = [];
@@ -149,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const breedsEmpty = $("#breeds-empty");
 
   /**
-   * Renderiza la lista de razas registradas
+   * Renderiza la lista de razas registradas en el DOM con botones de control
    * @method renderBreeds
    */
   const renderBreeds = () => {
@@ -180,7 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  breedForm.addEventListener("submit", (e) => {
+  /**
+   * Maneja el envío del formulario de ganadería para agregar nuevas razas
+   * @method handleBreedSubmit
+   * @param {Event} e - Evento de envío del formulario
+   */
+  const handleBreedSubmit = (e) => {
     e.preventDefault();
 
     const count = validarNumero($("#b-initial"));
@@ -195,14 +213,16 @@ document.addEventListener("DOMContentLoaded", () => {
     saveBreedsToStorage(); // Guardar en localStorage
     breedForm.reset();
     renderBreeds();
-  });
+  };
+
+  breedForm.addEventListener("submit", handleBreedSubmit);
 
   // ================== CALCULADORA ==================
   const calcForm = $("#calc-form");
   const calcResults = $("#calc-results");
 
   /**
-   * Calcula y muestra los resultados de costos de siembra
+   * Calcula y muestra los resultados de costos de siembra, incluyendo utilidad estimada
    * @method calcularCostos
    */
   const calcularCostos = () => {
@@ -231,14 +251,21 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   };
 
-  calcForm.addEventListener("submit", (e) => {
+  /**
+   * Maneja el envío del formulario de calculadora de costos
+   * @method handleCalcSubmit
+   * @param {Event} e - Evento de envío del formulario
+   */
+  const handleCalcSubmit = (e) => {
     e.preventDefault();
     calcularCostos();
-  });
+  };
+
+  calcForm.addEventListener("submit", handleCalcSubmit);
 
   // ================== INICIALIZACIÓN ==================
   /**
-   * Inicializa la aplicación cargando datos guardados
+   * Inicializa la aplicación cargando datos guardados desde localStorage y renderizando las listas
    * @method init
    */
   const init = () => {
@@ -251,6 +278,47 @@ document.addEventListener("DOMContentLoaded", () => {
     renderBreeds();
   };
 
+  // ================== AUTENTICACIÓN ==================
+  const logoutBtn = $("#logout-btn");
+  const userInfo = $("#user-info");
+
+  /**
+   * Muestra la información del usuario logueado en el header
+   * @method displayUserInfo
+   */
+  const displayUserInfo = () => {
+    const session = localStorage.getItem('agroGestion_session');
+    if (session) {
+      const sessionData = JSON.parse(session);
+      const userEmail = sessionData.email;
+      userInfo.innerHTML = `👤 ${userEmail}`;
+    }
+  };
+
+  /**
+   * Maneja el cierre de sesión del usuario
+   * @method handleLogout
+   * @param {Event} e - Evento de clic
+   */
+  const handleLogout = (e) => {
+    e.preventDefault();
+    
+    // Confirmar cierre de sesión
+    if (confirm("¿Está seguro que desea cerrar sesión?")) {
+      // Limpiar datos de sesión
+      localStorage.removeItem('agroGestion_session');
+      
+      // Redirigir a home
+      window.location.href = 'home.html';
+    }
+  };
+
+  // Agregar event listener para cerrar sesión
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+
   // Inicializar la aplicación
   init();
+  displayUserInfo();
 });

@@ -2,7 +2,7 @@
 
 **Sistema integral de gestión agropecuaria** - Taller de Desarrollo Web 2025
 
-## 📋 Índice
+## Índice
 - [Información del Proyecto](#información-del-proyecto)
 - [Autores](#autores)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
@@ -28,16 +28,16 @@
 
 ## Tecnologías Utilizadas
 
-| Categoría                | Tecnología   |Versión |
-|--------------------------|--------------|--------|
-| **Frontend**             | HTML5        | -      |
-| **Estilos**              | CSS3         | -      |
-| **JavaScript**           | Vanilla JS   |  ES6+  |
-| **Almacenamiento**       | localStorage | HTML5  |
-| **Control de Versiones** | Git & GitHub | -      |
-| **Deployment**           | GitHub Pages | -      |
+| Categoría                | Tecnología  
+|--------------------------|--------------
+| **Frontend**             | HTML5
+| **Estilos**              | CSS3
+| **JavaScript**           | Vanilla JS
+| **Almacenamiento**       | localStorage
+| **Control de Versiones** | Git & GitHub
+| **Deployment**           | GitHub Pages 
 
-## 📱 Contenido de la Página
+## Contenido de la Página
 
 ### **Secciones Principales:**
 
@@ -48,7 +48,6 @@
 2. **Organizador de Maquinaria**
    - Formulario de registro con carga de imágenes
    - Lista dinámica con fotos y detalles
-   - Filtros por tipo y estado
 
 3. **Registro de Ganadería**
    - Control de inventario por animal y raza
@@ -66,10 +65,9 @@
    - Acceso directo a cotizaciones
 
 ### **Funcionalidades Técnicas:**
-- ✅ **Validación de formularios** con mensajes de error
-- ✅ **Almacenamiento persistente** con localStorage
-- ✅ **Diseño responsivo** para desktop y móvil
-- ✅ **Documentación JSDoc** completa
+- **Validación de formularios** con mensajes de error
+- **Almacenamiento persistente** con localStorage
+- **Diseño responsivo** para desktop y móvil
 
 ## Enlaces
 
@@ -80,7 +78,6 @@
 
 ### **Requisitos Previos:**
 - Navegador web moderno (Chrome, Firefox, Safari, Edge)
-- Conexión a internet (para API del clima)
 
 ### **Instrucciones:**
 1. **Clonar el repositorio:**
@@ -101,7 +98,7 @@
 1. **Maquinaria**: Completa el formulario y opcionalmente agrega una foto
 2. **Ganadería**: Selecciona tipo de animal, raza y cantidad inicial
 3. **Calculadora**: Ingresa los datos de hectáreas, costos y precios
-6. **Bolsa**: Haz clic en los enlaces para ver cotizaciones
+4. **Bolsa**: Haz clic en los enlaces para ver cotizaciones
 
 ---
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> AgroGestión 360 - Bienvenida </title>
+  <title> AgroGestión 360 - Ingresar </title>
   <link rel="stylesheet" href="styles-home.css">
   <link rel="shortcut icon" href="./images/icono de agrogestion.png" >
 </head>
@@ -12,8 +12,57 @@
     <div class="overlay">
       <h1>🌿 Bienvenido a AgroGestión 360 🌿</h1>
       <p>La plataforma integral para gestión de maquinaria, ganadería y costos de siembra.</p>
-      <a href="index.html" class="btn" target="_self">Ingresar</a>
+      
+      <!-- Formularios de Login y Registro -->
+      <div class="auth-container">
+        <!-- Formulario de Login -->
+        <div id="login-form" class="auth-form active">
+          <h2>Iniciar Sesión</h2>
+          <form id="login-form-element">
+            <div class="form-group">
+              <label for="login-email">Correo Electrónico:</label>
+              <input type="email" id="login-email" name="email" placeholder="Ingrese su correo electrónico" required>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Contraseña:</label>
+              <input type="password" id="login-password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+            <button type="submit" class="btn primary">Iniciar Sesión</button>
+          </form>
+          <p class="auth-switch">¿No tienes cuenta? <a href="#" id="show-register">Regístrate aquí</a></p>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div id="register-form" class="auth-form">
+          <h2>Crear Cuenta</h2>
+          <form id="register-form-element">
+            <div class="form-group">
+              <label for="register-name">Nombre Completo:</label>
+              <input type="text" id="register-name" name="name" placeholder="Ingrese su nombre completo" required>
+            </div>
+            <div class="form-group">
+              <label for="register-email">Correo Electrónico:</label>
+              <input type="email" id="register-email" name="email" placeholder="ejemplo@correo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="register-password">Contraseña:</label>
+              <input type="password" id="register-password" name="password" placeholder="Mínimo 8 caracteres" minlength="8" required>
+            </div>
+            <div class="form-group">
+              <label for="register-confirm">Confirmar Contraseña:</label>
+              <input type="password" id="register-confirm" name="confirm" placeholder="Repita su contraseña" required>
+            </div>
+            <button type="submit" class="btn primary">Crear Cuenta</button>
+          </form>
+          <p class="auth-switch">¿Ya tienes cuenta? <a href="#" id="show-login">Inicia sesión aquí</a></p>
+        </div>
+      </div>
+
+      <!-- Mensaje de error/éxito -->
+      <div id="auth-message" class="auth-message"></div>
     </div>
   </div>
+
+  <script src="home.js"></script>
 </body>
 </html>

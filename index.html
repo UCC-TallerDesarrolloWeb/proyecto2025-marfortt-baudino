@@ -8,15 +8,27 @@
   <link rel="shortcut icon" href="./images/icono de agrogestion.png" >
 </head>
 <body>
+  <!-- Script de verificación de sesión -->
+  <script>
+    // Verificar si el usuario está autenticado
+    const session = localStorage.getItem('agroGestion_session');
+    if (!session) {
+      // Redirigir a home si no hay sesión
+      window.location.href = 'home.html';
+    }
+  </script>
+
   <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="logo"> AgroGestión <span class="accent">360</span></div>
+    <div id="user-info" class="user-info"></div>
     <nav class="main-nav">
       <a href="./home.html">Inicio</a>
       <a href="#maquinaria">Maquinaria</a>
       <a href="#ganaderia">Ganadería</a>
       <a href="#siembra">Calculadora</a>
       <a href="#bolsa">Bolsa De Valores</a>
+      <a href="#" id="logout-btn" class="logout-btn">Cerrar Sesión</a>
     </nav>
   </header>
 
