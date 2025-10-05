@@ -64,6 +64,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // ================== MODAL DE CONFIRMACIÓN ==================
+  const modal = $("#confirmation-modal");
+  const confirmationMessage = $("#confirmation-message");
+  const confirmationDetails = $("#confirmation-details");
+  const cancelBtn = $("#cancel-btn");
+  const confirmBtn = $("#confirm-btn");
+  let currentConfirmAction = null;
+
+  /**
+   * Muestra el modal de confirmación con mensaje personalizado
+   * @method showConfirmationModal
+   * @param {string} message - Mensaje principal
+   * @param {string} details - Detalles del elemento a eliminar
+   * @param {Function} onConfirm - Función a ejecutar si se confirma
+   */
+  const showConfirmationModal = (message, details, onConfirm) => {
+    confirmationMessage.textContent = message;
+    confirmationDetails.innerHTML = details;
+    currentConfirmAction = onConfirm;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+  };
+
+  /**
+   * Oculta el modal de confirmación
+   * @method hideConfirmationModal
+   */
+  const hideConfirmationModal = () => {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+    currentConfirmAction = null;
+  };
+
+  // Event listeners para el modal
+  cancelBtn.addEventListener('click', hideConfirmationModal);
+  
+  confirmBtn.addEventListener('click', () => {
+    if (currentConfirmAction) {
+      currentConfirmAction();
+    }
+    hideConfirmationModal();
+  });
+
+  // Cerrar modal al hacer clic en el overlay
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      hideConfirmationModal();
+    }
+  });
+
   // ================== MAQUINARIA ==================
   let machinery = [];
   const machineryForm = $("#machinery-form");
@@ -100,9 +150,25 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       li.addEventListener("click", (e) => {
         if (e.target.dataset.action === "eliminar") {
-          machinery = machinery.filter((x) => x !== m);
-          saveMachineryToStorage(); // Guardar en localStorage
-          renderMachinery();
+          const details = `
+            <strong>🚜 ${m.name}</strong>
+            <div style="margin-top: 8px; color: #666;">
+              Tipo: ${m.type}<br>
+              Estado: ${m.condition}<br>
+              Precio: USD ${m.price.toLocaleString()}<br>
+              ${m.notes ? `Notas: ${m.notes}` : ''}
+            </div>
+          `;
+          
+          showConfirmationModal(
+            "¿Estás seguro de que quieres eliminar esta maquinaria?",
+            details,
+            () => {
+              machinery = machinery.filter((x) => x !== m);
+              saveMachineryToStorage();
+              renderMachinery();
+            }
+          );
         }
       });
       machineryList.appendChild(li);
@@ -183,11 +249,32 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       li.addEventListener("click", (e) => {
         const act = e.target.dataset.action;
-        if (act === "inc") b.count++;
-        if (act === "dec") b.count = Math.max(0, b.count - 1);
-        if (act === "del") breeds = breeds.filter((x) => x !== b);
-        saveBreedsToStorage(); // Guardar en localStorage
-        renderBreeds();
+        if (act === "inc") {
+          b.count++;
+          saveBreedsToStorage();
+          renderBreeds();
+        } else if (act === "dec") {
+          b.count = Math.max(0, b.count - 1);
+          saveBreedsToStorage();
+          renderBreeds();
+        } else if (act === "del") {
+          const details = `
+            <strong>🐄 ${b.type} - ${b.name}</strong>
+            <div style="margin-top: 8px; color: #666;">
+              Cantidad actual: ${b.count} ${b.count === 1 ? 'animal' : 'animales'}
+            </div>
+          `;
+          
+          showConfirmationModal(
+            "¿Estás seguro de que quieres eliminar esta raza completa?",
+            details,
+            () => {
+              breeds = breeds.filter((x) => x !== b);
+              saveBreedsToStorage();
+              renderBreeds();
+            }
+          );
+        }
       });
       breedsList.appendChild(li);
     });
@@ -303,14 +390,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleLogout = (e) => {
     e.preventDefault();
     
-    // Confirmar cierre de sesión
-    if (confirm("¿Está seguro que desea cerrar sesión?")) {
-      // Limpiar datos de sesión
-      localStorage.removeItem('agroGestion_session');
-      
-      // Redirigir a home
-      window.location.href = 'home.html';
-    }
+    const session = localStorage.getItem('agroGestion_session');
+    const sessionData = session ? JSON.parse(session) : null;
+    const userEmail = sessionData ? sessionData.email : 'Usuario';
+    
+    const details = `
+      <strong>👤 ${userEmail}</strong>
+      <div style="margin-top: 8px; color: #666;">
+        Se cerrará tu sesión actual y volverás a la página de inicio
+      </div>
+    `;
+    
+    showConfirmationModal(
+      "¿Estás seguro de que quieres cerrar sesión?",
+      details,
+      () => {
+        localStorage.removeItem('agroGestion_session');
+        window.location.href = 'home.html';
+      }
+    );
   };
 
   // Agregar event listener para cerrar sesión
