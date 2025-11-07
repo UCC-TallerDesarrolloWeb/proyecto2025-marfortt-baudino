@@ -1,0 +1,11 @@
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
