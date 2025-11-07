@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method saveMachineryToStorage
    */
   const saveMachineryToStorage = () => {
-    localStorage.setItem('agroGestion_machinery', JSON.stringify(machinery));
+    localStorage.setItem("agroGestion_machinery", JSON.stringify(machinery));
   };
 
   /**
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method loadMachineryFromStorage
    */
   const loadMachineryFromStorage = () => {
-    const stored = localStorage.getItem('agroGestion_machinery');
+    const stored = localStorage.getItem("agroGestion_machinery");
     if (stored) {
       machinery = JSON.parse(stored);
     }
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method saveBreedsToStorage
    */
   const saveBreedsToStorage = () => {
-    localStorage.setItem('agroGestion_breeds', JSON.stringify(breeds));
+    localStorage.setItem("agroGestion_breeds", JSON.stringify(breeds));
   };
 
   /**
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method loadBreedsFromStorage
    */
   const loadBreedsFromStorage = () => {
-    const stored = localStorage.getItem('agroGestion_breeds');
+    const stored = localStorage.getItem("agroGestion_breeds");
     if (stored) {
       breeds = JSON.parse(stored);
     }
@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================== MODAL DE CONFIRMACIÓN ==================
   const modal = $("#confirmation-modal");
+  const confirmationTitle = $("#confirmation-title");
   const confirmationMessage = $("#confirmation-message");
   const confirmationDetails = $("#confirmation-details");
   const cancelBtn = $("#cancel-btn");
@@ -79,12 +80,22 @@ document.addEventListener("DOMContentLoaded", () => {
    * @param {string} details - Detalles del elemento a eliminar
    * @param {Function} onConfirm - Función a ejecutar si se confirma
    */
-  const showConfirmationModal = (message, details, onConfirm) => {
+  /**
+   * Muestra el modal de confirmación con mensaje personalizado
+   * @param {string} message - Mensaje principal
+   * @param {string} details - Detalles del elemento
+   * @param {Function} onConfirm - Acción a ejecutar al confirmar
+   * @param {string} [title='Confirmar acción'] - Título del modal
+   * @param {string} [confirmText='Confirmar'] - Texto del botón de confirmación
+   */
+  const showConfirmationModal = (message, details, onConfirm, title = "Confirmar acción", confirmText = "Confirmar") => {
+    if (confirmationTitle) confirmationTitle.textContent = title;
     confirmationMessage.textContent = message;
     confirmationDetails.innerHTML = details;
+    confirmBtn.textContent = confirmText;
     currentConfirmAction = onConfirm;
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden"; // Prevenir scroll del fondo
   };
 
   /**
@@ -92,15 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method hideConfirmationModal
    */
   const hideConfirmationModal = () => {
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto";
     currentConfirmAction = null;
   };
 
   // Event listeners para el modal
-  cancelBtn.addEventListener('click', hideConfirmationModal);
+  cancelBtn.addEventListener("click", hideConfirmationModal);
   
-  confirmBtn.addEventListener('click', () => {
+  confirmBtn.addEventListener("click", () => {
     if (currentConfirmAction) {
       currentConfirmAction();
     }
@@ -108,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Cerrar modal al hacer clic en el overlay
-  modal.addEventListener('click', (e) => {
+  modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       hideConfirmationModal();
     }
@@ -138,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const photoHtml = m.photo ? 
         `<div class="machinery-photo">
           <img src="${m.photo}" alt="Foto de ${m.name}" class="machinery-image">
-        </div>` : '';
+        </div>` : "";
       
       li.innerHTML = `
         ${photoHtml}
@@ -152,11 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.dataset.action === "eliminar") {
           const details = `
             <strong>🚜 ${m.name}</strong>
-            <div style="margin-top: 8px; color: #666;">
+            <div class="detail-meta">
               Tipo: ${m.type}<br>
               Estado: ${m.condition}<br>
               Precio: USD ${m.price.toLocaleString()}<br>
-              ${m.notes ? `Notas: ${m.notes}` : ''}
+              ${m.notes ? `Notas: ${m.notes}` : ""}
             </div>
           `;
           
@@ -167,7 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
               machinery = machinery.filter((x) => x !== m);
               saveMachineryToStorage();
               renderMachinery();
-            }
+            },
+            "Confirmar Eliminación",
+            "Sí, Eliminar"
           );
         }
       });
@@ -260,8 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (act === "del") {
           const details = `
             <strong>🐄 ${b.type} - ${b.name}</strong>
-            <div style="margin-top: 8px; color: #666;">
-              Cantidad actual: ${b.count} ${b.count === 1 ? 'animal' : 'animales'}
+            <div class="detail-meta">
+              Cantidad actual: ${b.count} ${b.count === 1 ? "animal" : "animales"}
             </div>
           `;
           
@@ -272,7 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
               breeds = breeds.filter((x) => x !== b);
               saveBreedsToStorage();
               renderBreeds();
-            }
+            },
+            "Confirmar Eliminación",
+            "Sí, Eliminar"
           );
         }
       });
@@ -374,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @method displayUserInfo
    */
   const displayUserInfo = () => {
-    const session = localStorage.getItem('agroGestion_session');
+    const session = localStorage.getItem("agroGestion_session");
     if (session) {
       const sessionData = JSON.parse(session);
       const userEmail = sessionData.email;
@@ -390,13 +405,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleLogout = (e) => {
     e.preventDefault();
     
-    const session = localStorage.getItem('agroGestion_session');
+    const session = localStorage.getItem("agroGestion_session");
     const sessionData = session ? JSON.parse(session) : null;
-    const userEmail = sessionData ? sessionData.email : 'Usuario';
+    const userEmail = sessionData ? sessionData.email : "Usuario";
     
     const details = `
       <strong>👤 ${userEmail}</strong>
-      <div style="margin-top: 8px; color: #666;">
+      <div class="detail-meta">
         Se cerrará tu sesión actual y volverás a la página de inicio
       </div>
     `;
@@ -405,9 +420,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "¿Estás seguro de que quieres cerrar sesión?",
       details,
       () => {
-        localStorage.removeItem('agroGestion_session');
-        window.location.href = 'home.html';
-      }
+        localStorage.removeItem("agroGestion_session");
+        window.location.href = "home.html";
+      },
+      "Cerrar sesión",
+      "Cerrar sesión"
     );
   };
 

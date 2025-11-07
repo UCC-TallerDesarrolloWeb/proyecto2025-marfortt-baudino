@@ -17,14 +17,17 @@ body {
 .main-nav a { margin:0 10px; color:#fff; text-decoration:none; }
 
 .logout-btn {
-  background: rgba(255, 107, 107, 0.8) !important;
-  padding: 5px 10px !important;
-  border-radius: 15px !important;
+  background: rgba(255, 107, 107, 0.9);
+  padding: 6px 12px;
+  border-radius: 15px;
   transition: background-color 0.3s;
+  color: #fff;
+  text-decoration: none;
+  border: none;
 }
 
 .logout-btn:hover {
-  background: rgba(255, 107, 107, 1) !important;
+  background: rgba(255, 80, 80, 1);
 }
 
 
@@ -146,6 +149,246 @@ input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px
 .machinery-info {
   flex: 1;
 }
+
+/* Small utility classes added from home styles */
+.file-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.go-to-app {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #77e38e;
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styles using ID selectors (added to satisfy reviewer requirement) */
+#user-info {
+  font-weight: 700;
+  color: #77e38e;
+  font-size: 0.95rem;
+}
+
+#logout-btn {
+  display: inline-block;
+  background: rgba(255, 80, 80, 0.98);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: none;
+}
+
+#logout-btn:hover {
+  background: rgba(255, 60, 60, 1);
+}
+
+#calc-results {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Meta detail used in confirmation modals and info blocks (replaces inline styles) */
+.detail-meta {
+  margin-top: 8px;
+  color: #666;
+}
+
+  /* --- Begin merged styles from styles-home.css --- */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+  }
+
+  .hero {
+    background: url("./images/background2.jpeg") no-repeat center center/cover;
+    min-height: 100vh;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .overlay {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 12px;
+    max-width: 650px;
+    width: 100%;
+  }
+
+  h1 { font-size: 2.2rem; margin-bottom: 10px; }
+  p { font-size: 1.1rem; margin-bottom: 20px; }
+
+  .auth-container {
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left;
+  }
+
+  .auth-form {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: #333;
+  }
+
+  .auth-form.active {
+    display: block;
+  }
+
+  .auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c5e2e;
+    font-size: 1.8rem;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c5e2e;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #77e38e;
+  }
+
+  .form-group input:invalid {
+    border-color: #ff6b6b;
+  }
+
+  .btn.primary {
+    width: 100%;
+    padding: 15px;
+    background: #64d87d;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn.primary:hover {
+    background: #5fc371;
+  }
+
+  .auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+  }
+
+  .auth-switch a {
+    color: #64d87d;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .auth-switch a:hover {
+    text-decoration: underline;
+  }
+
+  .auth-message {
+    display: none;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .auth-message.error {
+    background: rgba(255, 107, 107, 0.9);
+    color: #fff;
+    border: 2px solid #ff4757;
+  }
+
+  .auth-message.success {
+    background: rgba(100, 216, 125, 0.9);
+    color: #000;
+    border: 2px solid #2ed573;
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 10px 0;
+      background-attachment: scroll; /* Mejor performance en móviles */
+    }
+  
+    .overlay {
+      padding: 20px;
+      margin: 10px;
+    }
+  
+    .auth-container {
+      max-width: 100%;
+    }
+  
+    .auth-form {
+      padding: 20px 15px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    .form-group input {
+      padding: 15px 12px; /* Inputs más grandes para móvil */
+    }
+  }
+
+  @media (max-width: 400px) {
+    .overlay {
+      padding: 15px;
+      margin: 5px;
+    }
+  
+    .auth-form {
+      padding: 15px 10px;
+    }
+  
+    h1 {
+      font-size: 1.6rem;
+    }
+  }
+
+  /* --- End merged styles from styles-home.css --- */
 
 /* Responsive - Móviles */
 @media (max-width: 768px) {

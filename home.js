@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @returns {object|null} Datos del usuario o null si no existe
    */
   const getRegisteredUser = () => {
-    const userData = localStorage.getItem('agroGestion_user');
+    const userData = localStorage.getItem("agroGestion_user");
     return userData ? JSON.parse(userData) : null;
   };
 
@@ -53,12 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
    * @param {string} formToShow - 'login' o 'register'
    */
   const toggleForms = (formToShow) => {
-    if (formToShow === 'register') {
-      loginForm.classList.remove('active');
-      registerForm.classList.add('active');
+    if (formToShow === "register") {
+      loginForm.classList.remove("active");
+      registerForm.classList.add("active");
     } else {
-      registerForm.classList.remove('active');
-      loginForm.classList.add('active');
+      registerForm.classList.remove("active");
+      loginForm.classList.add("active");
     }
     // Limpiar mensajes al cambiar de formulario
     authMessage.style.display = "none";
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return { isValid: false, message: "El nombre es requerido" };
     }
     
-    if (!email.includes('@')) {
+    if (!email.includes("@")) {
       return { isValid: false, message: "Ingrese un email válido" };
     }
     
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       password: password,
       registeredAt: new Date().toISOString()
     };
-    localStorage.setItem('agroGestion_user', JSON.stringify(userData));
+    localStorage.setItem("agroGestion_user", JSON.stringify(userData));
   };
 
   /**
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showMessage("¡Bienvenido a AgroGestión 360!", "success");
       
       // Guardar sesión
-      localStorage.setItem('agroGestion_session', JSON.stringify({
+      localStorage.setItem("agroGestion_session", JSON.stringify({
         email: email,
         loginTime: new Date().toISOString()
       }));
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Cambiar a formulario de login después de 2 segundos
     setTimeout(() => {
-      toggleForms('login');
+      toggleForms("login");
       // Pre-llenar email en login
       $("#login-email").value = email;
     }, 2000);
@@ -208,12 +208,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event listeners
   showRegisterLink.addEventListener("click", (e) => {
     e.preventDefault();
-    toggleForms('register');
+    toggleForms("register");
   });
 
   showLoginLink.addEventListener("click", (e) => {
     e.preventDefault();
-    toggleForms('login');
+    toggleForms("login");
   });
 
   loginFormElement.addEventListener("submit", handleLogin);
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicialización: mostrar formulario apropiado
   const initializeForms = () => {
     // Siempre mostrar login por defecto
-    toggleForms('login');
+    toggleForms("login");
     
     const registeredUser = getRegisteredUser();
     if (registeredUser) {
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Verificar si ya hay una sesión activa
-  const existingSession = localStorage.getItem('agroGestion_session');
+  const existingSession = localStorage.getItem("agroGestion_session");
   if (existingSession) {
     const sessionData = JSON.parse(existingSession);
     showMessage(`Ya tienes una sesión activa como ${sessionData.email}`, "success");
@@ -240,12 +240,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mostrar botón para ir directamente a la app
     setTimeout(() => {
       const overlay = $(".overlay");
-      const goToAppBtn = document.createElement('a');
+      const goToAppBtn = document.createElement("a");
       goToAppBtn.href = "index.html";
       goToAppBtn.className = "btn";
       goToAppBtn.textContent = "Ir a la Aplicación";
-      goToAppBtn.style.marginTop = "10px";
-      overlay.appendChild(goToAppBtn);
+  goToAppBtn.classList.add("go-to-app");
+  overlay.appendChild(goToAppBtn);
     }, 1000);
   } else {
     // Inicializar formularios si no hay sesión activa
