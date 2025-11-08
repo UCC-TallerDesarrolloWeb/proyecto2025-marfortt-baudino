@@ -100,6 +100,30 @@
 3. **Calculadora**: Ingresa los datos de hectáreas, costos y precios
 4. **Bolsa**: Haz clic en los enlaces para ver cotizaciones
 
+## Segundo Parcial
+
+## Ejecucion de React (Vite)
+- Requisitos: Node 18+ y npm
+- Comandos:
+  - cd frontend
+  - npm install
+  - npm run dev
+  - Abrir http://localhost:5173/
+- Rutas:
+  - /#/home (login/registro)
+  - /#/ (aplicacion principal)
+
+
+- [x] Vite + React instalado
+- [x] Hooks: useState, useEffect, useContext, useNavigate
+- [x] react-router-dom con Outlet (layouts)
+- [x] Estructura: components/, pages/, styles/
+- [x] Imports con alias @
+- [x] Validaciones en tiempo real (onChange) + mensajes accesibles
+- [x] Componentes genericos Button, Card, Input
+- [x] localStorage: sesion/maquinaria/ganaderia
+- [x] fetch: clima (Open-Meteo)
+- [x] Listas dinamicas con JSON local (demo cotizaciones)
 ---
 
 ## Requisitos del Primer Parcial
@@ -239,7 +263,7 @@ Por cada corrección o defecto en el HTML+CSS+Js se descontará un 5% del 85%.
 ### Sobre React
 - [ ] Se debe emplear **Vite** para instalar **React**
 - [ ] Se debe emplear **Hooks**, useState, useEffect, useContext, useNavigate
-- [ ] Se debe emplear **react-router-dom** para el enrutamiento a otras páginas
+- [ ] Se debe emplear **react-router-dom** para el enrutamiento a otras p�ginas
 - [ ] Se debe emplear **outlet** para que un componente principal renderice componentes de rutas hijas.
 - [ ] La estructura del proyecto (carpetas) debe ser el correcto: components, pages, styles
 - [ ] Los **imports** deben ser usando con **alias**
@@ -293,53 +317,3 @@ const activities = [
 - [ ] Debe cumplir con TODOS los requisitos del 1er y 2do Parcial (si se agrego código nuevo en Js, se debe documentar, si hay nuevos inputs de html deben contener su label, etc)
 - [ ] Incluir al menos 5 tests con Jest + React Testing Library (ejemplo: que un botón renderice un texto esperado).
 
----
-
-## Ejecutar React (Vite)
-
-- Requisitos: Node 18+ y npm
-- Comandos:
-  - `cd frontend`
-  - `npm install`
-  - `npm run dev`
-  - Abrir `http://localhost:5173/`
-- Rutas SPA:
-  - `/#/home` (inicio de sesión / registro)
-  - `/#/` (aplicación principal)
-- HTML original (estático) servido por Vite:
-  - `http://localhost:5173/pages/home.html`
-  - `http://localhost:5173/pages/index.html`
-
-## Segundo Parcial — Implementación en este proyecto (estado actual)
-
-- Stack: Vite + React 19 en `frontend/`.
-- Hooks usados: `useState`, `useEffect` en `src/App.jsx`, `src/pages/HomePage.jsx`, `src/pages/IndexPage.jsx`.
-- Enrutamiento actual: hash manual (`window.location.hash`).
-- Lógica de la página principal:
-  - UI en React (`IndexPage.jsx`).
-  - Se inyecta el script legacy `public/pages/app.js` para mantener funcionalidades de maquinaria/ganadería/calculadora mientras se porta a React.
-- Persistencia: `localStorage` para usuario, sesión y datos de la app.
-
-### Checklist de cumplimiento (parcial 2)
-
-- [x] Proyecto con Vite + React instalado
-- [x] Hooks: `useState`, `useEffect`
-- [ ] Hooks: `useContext`, `useNavigate`
-- [ ] Enrutamiento con `react-router-dom` y `Outlet`
-- [ ] Componentes reutilizables (Button/Card/Input)
-- [x] Persistencia en `localStorage`
-- [ ] Imports con alias (`@/...` en `vite.config.js`)
-- [ ] Validaciones en tiempo real (`onChange`) con mensajes accesibles
-- [ ] Datos desde backend o JSON local (listas dinámicas)
-- [ ] Consola sin errores/warnings
-- [ ] Portar completamente `app.js` a componentes React
-
-### Plan de trabajo para completar el 100%
-
-1. Instalar `react-router-dom` y migrar a `HashRouter` + `Routes` + `Outlet`.
-2. Crear `components/` y extraer `Button`, `Card`, `Input` reutilizables.
-3. Configurar alias `@` en `vite.config.js` (`resolve.alias`).
-4. Validación en tiempo real en formularios con mensajes accesibles.
-5. Portar la lógica de `public/pages/app.js` a React (Maquinaria, Ganadería, Calculadora), manteniendo ids necesarios.
-6. Añadir un JSON local en `src/data/` y renderizar una lista a modo de ejemplo.
-7. Revisar consola, ajustar estilos y textos finales.

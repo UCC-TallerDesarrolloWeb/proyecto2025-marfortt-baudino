@@ -1,0 +1,189 @@
+/* Styles used by the converted pages (paths expect images in /images/) */
+body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+
+.site-header { position:sticky; top:0; background:#0f1720; color:#fff;
+  display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+
+.user-info { color: #77e38e; font-size: 0.9rem; font-weight: bold; }
+.logo { font-weight:bold; font-size:1.2rem; }
+.accent { color:#77e38e; }
+.main-nav a { margin:0 10px; color:#fff; text-decoration:none; }
+
+.logout-btn { background: rgba(255, 107, 107, 0.9); padding: 6px 12px; border-radius: 15px; transition: background-color 0.3s; color: #fff; text-decoration: none; border: none; }
+.logout-btn:hover { background: rgba(255, 80, 80, 1); }
+
+.hero { padding:60px 20px; text-align:center; }
+.section { padding:40px 20px; border-bottom:1px solid #ddd; margin: 0 auto; max-width: 900px; box-sizing: border-box; box-shadow: 0 10px 30px rgb(40, 99, 28); border-radius: 25px; margin-bottom: 30px; background:#fff; }
+.card { background:#fff; padding:15px; border-radius:8px; margin:15px 0; box-shadow:0 2px 6px rgba(0,0,0,.1); }
+.grid { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.item { background:#fafafa; padding:10px; border:1px solid #ddd; border-radius:6px; }
+.hero { background: url('/images/background2.jpeg') no-repeat center center/cover; min-height: 100vh; background-attachment: fixed; display:flex; align-items:center; justify-content:center; }
+
+/* Overlay del hero, tomado del estilo original */
+.overlay { background: rgba(0,0,0,0.6); color:#fff; padding:40px; text-align:center; border-radius:12px; max-width:650px; width:100%; }
+
+.preview-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; }
+.preview-card { display:block; background:#fff; border:1px solid #ddd; border-radius:10px; overflow:hidden; text-decoration:none; color:#111; box-shadow:0 2px 6px rgba(0,0,0,.06); transition: transform .1s ease; }
+.preview-card:hover { transform: translateY(-2px); }
+.preview-card img { width:100%; height:140px; object-fit:contain; display:block; background: #f8f9fa; }
+.preview-info { padding:10px 12px; }
+.preview-info h3 { margin:0 0 4px 0; font-size:1.05rem; }
+.preview-info p { margin:0; color:#666; font-size:.95rem; }
+
+.btn { display:inline-block; padding:10px 14px; border-radius:10000px; border:1px solid #444; background:#fff; color:#000; margin:2px; }
+.btn.primary { background:#64d87d; border-color:#000000; font-weight:bold; }
+
+.muted { color:#777; }
+.footer { background:#207f17; color:#ffffff; padding:20px; text-align:center; }
+
+/* Inputs y selects como el original */
+input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing: border-box; }
+
+/* Estilos para elementos de maquinaria con foto */
+.machinery-item { display: flex; align-items: flex-start; gap: 15px; padding: 15px; }
+.machinery-photo { flex-shrink: 0; }
+.machinery-image { width: 120px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.machinery-info { flex: 1; }
+
+.auth-container { max-width: 500px; margin: 20px auto; text-align: left; }
+.auth-form { display: none; background: rgba(255,255,255,0.95); padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.3); color:#333; }
+.auth-form.active { display:block; }
+.auth-message { display:none; }
+
+
+.file-label { display:block; margin-top:6px; font-size:0.95rem; color:#333; }
+
+@media (max-width: 600px) {
+  .hero { min-height: 40vh; background-attachment: scroll; }
+  .overlay { padding: 20px; margin: 10px; }
+}
+
+/* Mobile refinements */
+@media (max-width: 768px) {
+  .site-header { flex-direction: column; gap: 10px; padding: 10px 15px; }
+  .main-nav a { margin: 6px; display: inline-block; }
+  .section { max-width: 100%; margin: 10px; border-radius: 16px; }
+  .preview-grid { grid-template-columns: 1fr; }
+}
+
+/* Modal de confirmación (copied from pages/styles.css) */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+  padding: 20px 25px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #d32f2f;
+  font-size: 1.3rem;
+}
+
+.modal-body {
+  padding: 20px 25px;
+}
+
+.modal-body p {
+  margin: 0 0 15px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.confirmation-details {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid #77e38e;
+}
+
+.confirmation-details strong {
+  color: #2c5e2e;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.warning-text {
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.modal-footer {
+  padding: 15px 25px 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+}
+
+.btn.secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn.secondary:hover {
+  background: #5a6268;
+}
+
+.btn.danger {
+  background: #d32f2f;
+  color: white;
+  border: none;
+}
+
+.btn.danger:hover {
+  background: #b71c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content { width: 95%; margin: 10px; }
+  .modal-header, .modal-body, .modal-footer { padding-left: 15px; padding-right: 15px; }
+  .modal-footer { flex-direction: column; }
+  .modal-footer .btn { width: 100%; margin: 0; }
+}

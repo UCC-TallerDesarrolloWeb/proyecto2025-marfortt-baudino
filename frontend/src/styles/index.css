@@ -1,0 +1,14 @@
+/* Reset y base para replicar el estilo original */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f8f9fa;
+  color: #222;
+}
+
+/* Enlaces dentro del header principal ya están estilizados en Pages.css */

@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import '../pages/Pages.css';
+import { useNavigate } from 'react-router-dom';
+import { useSession } from '@/layouts/MainLayout';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import '@/styles/Pages.css';
 
 export default function HomePage() {
+  const navigate = useNavigate();
+  const { setSession } = useSession() || { setSession: ()=>{} };
   const [showRegister, setShowRegister] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
 
   // Controlled form state (simple)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [loginErrors, setLoginErrors] = useState({ email: '', password: '' });
 
   const [regName, setRegName] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
   const [regConfirm, setRegConfirm] = useState('');
+  const [regErrors, setRegErrors] = useState({ name:'', email:'', password:'', confirm:'' });
 
   useEffect(() => {
     // Pre-fill login email if user exists
@@ -47,6 +56,23 @@ export default function HomePage() {
     return { isValid: true };
   };
 
+  // Validaciones en tiempo real (onChange)
+  useEffect(() => {
+    setLoginErrors({
+      email: loginEmail && !loginEmail.includes('@') ? 'Email inválido' : '',
+      password: loginPassword && loginPassword.length < 8 ? 'Mínimo 8 caracteres' : ''
+    })
+  }, [loginEmail, loginPassword])
+
+  useEffect(() => {
+    setRegErrors({
+      name: regName && !regName.trim() ? 'Nombre requerido' : '',
+      email: regEmail && !regEmail.includes('@') ? 'Email inválido' : '',
+      password: regPassword && regPassword.length < 8 ? 'Mínimo 8 caracteres' : '',
+      confirm: regConfirm && regConfirm !== regPassword ? 'No coincide con contraseña' : ''
+    })
+  }, [regName, regEmail, regPassword, regConfirm])
+
   const saveUserData = (name, email, password) => {
     const userData = { name, email, password, registeredAt: new Date().toISOString() };
     localStorage.setItem('agroGestion_user', JSON.stringify(userData));
@@ -57,9 +83,11 @@ export default function HomePage() {
     const registered = getRegisteredUser();
     if (!loginEmail || !loginPassword) { showTmpMessage('Por favor, complete todos los campos', 'error'); return; }
     if (registered && registered.email === loginEmail && registered.password === loginPassword) {
-      localStorage.setItem('agroGestion_session', JSON.stringify({ email: loginEmail, loginTime: new Date().toISOString() }));
+      const sess = { email: loginEmail, loginTime: new Date().toISOString() };
+      localStorage.setItem('agroGestion_session', JSON.stringify(sess));
+      if (setSession) setSession(sess);
       showTmpMessage('¡Bienvenido! Redirigiendo...', 'success');
-      setTimeout(() => { window.location.hash = '/'; }, 800);
+      setTimeout(() => { navigate('/'); }, 800);
     } else {
       if (!registered) showTmpMessage('No hay usuario registrado. Por favor, regístrese primero.', 'error');
       else showTmpMessage('Credenciales incorrectas. Verifique su email y contraseña.', 'error');
@@ -89,15 +117,9 @@ export default function HomePage() {
           <div id="login-form" className={`auth-form ${!showRegister ? 'active' : ''}`}>
             <h2>Iniciar Sesión</h2>
             <form id="login-form-element" onSubmit={handleLogin}>
-              <div className="form-group">
-                <label htmlFor="login-email">Correo Electrónico:</label>
-                <input type="email" id="login-email" name="email" placeholder="Ingrese su correo electrónico" required value={loginEmail} onChange={e=>setLoginEmail(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="login-password">Contraseña:</label>
-                <input type="password" id="login-password" name="password" placeholder="Ingrese su contraseña" required value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} />
-              </div>
-              <button type="submit" className="btn primary">Iniciar Sesión</button>
+              <Input label="Correo Electrónico:" id="login-email" type="email" name="email" placeholder="Ingrese su correo electrónico" required value={loginEmail} onChange={e=>setLoginEmail(e.target.value)} error={loginErrors.email} />
+              <Input label="Contraseña:" id="login-password" type="password" name="password" placeholder="Ingrese su contraseña" required value={loginPassword} onChange={e=>setLoginPassword(e.target.value)} error={loginErrors.password} />
+              <Button type="submit" className="primary">Iniciar Sesión</Button>
             </form>
             <p className="auth-switch">¿No tienes cuenta? <a href="#" onClick={(e)=>{e.preventDefault(); setShowRegister(true);}}>Regístrate aquí</a></p>
           </div>
@@ -105,23 +127,11 @@ export default function HomePage() {
           <div id="register-form" className={`auth-form ${showRegister ? 'active' : ''}`}>
             <h2>Crear Cuenta</h2>
             <form id="register-form-element" onSubmit={handleRegister}>
-              <div className="form-group">
-                <label htmlFor="register-name">Nombre Completo:</label>
-                <input type="text" id="register-name" name="name" placeholder="Ingrese su nombre completo" required value={regName} onChange={e=>setRegName(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="register-email">Correo Electrónico:</label>
-                <input type="email" id="register-email" name="email" placeholder="ejemplo@correo.com" required value={regEmail} onChange={e=>setRegEmail(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="register-password">Contraseña:</label>
-                <input type="password" id="register-password" name="password" placeholder="Mínimo 8 caracteres" minLength={8} required value={regPassword} onChange={e=>setRegPassword(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="register-confirm">Confirmar Contraseña:</label>
-                <input type="password" id="register-confirm" name="confirm" placeholder="Repita su contraseña" required value={regConfirm} onChange={e=>setRegConfirm(e.target.value)} />
-              </div>
-              <button type="submit" className="btn primary">Crear Cuenta</button>
+              <Input label="Nombre Completo:" id="register-name" name="name" placeholder="Ingrese su nombre completo" required value={regName} onChange={e=>setRegName(e.target.value)} error={regErrors.name} />
+              <Input label="Correo Electrónico:" id="register-email" type="email" name="email" placeholder="ejemplo@correo.com" required value={regEmail} onChange={e=>setRegEmail(e.target.value)} error={regErrors.email} />
+              <Input label="Contraseña:" id="register-password" type="password" name="password" placeholder="Mínimo 8 caracteres" minLength={8} required value={regPassword} onChange={e=>setRegPassword(e.target.value)} error={regErrors.password} />
+              <Input label="Confirmar Contraseña:" id="register-confirm" type="password" name="confirm" placeholder="Repita su contraseña" required value={regConfirm} onChange={e=>setRegConfirm(e.target.value)} error={regErrors.confirm} />
+              <Button type="submit" className="primary">Crear Cuenta</Button>
             </form>
             <p className="auth-switch">¿Ya tienes cuenta? <a href="#" onClick={(e)=>{e.preventDefault(); setShowRegister(false);}}>Inicia sesión aquí</a></p>
           </div>
@@ -130,4 +140,3 @@ export default function HomePage() {
     </div>
   );
 }
-

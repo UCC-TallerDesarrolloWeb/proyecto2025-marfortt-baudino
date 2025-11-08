@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "Bolsa de Rosario - Soja",
+    "descripcion": "Precio pizarra referencia",
+    "precio": "USD 280/t",
+    "fecha": "Demo",
+    "logo": "/images/logo rosario.png",
+    "alt": "Bolsa de Rosario"
+  },
+  {
+    "nombre": "Bolsa de Córdoba - Maíz",
+    "descripcion": "Precio pizarra referencia",
+    "precio": "USD 190/t",
+    "fecha": "Demo",
+    "logo": "/images/logo cba .png",
+    "alt": "Bolsa de Córdoba"
+  }
+]
