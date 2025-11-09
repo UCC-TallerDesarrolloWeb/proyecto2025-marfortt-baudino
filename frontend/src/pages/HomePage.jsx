@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSession } from '@/layouts/MainLayout';
+import { useSession } from '@/contexts/session';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import Card from '@/components/Card';

@@ -2,7 +2,7 @@
 body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
 
 .site-header { position:sticky; top:0; background:#0f1720; color:#fff;
-  display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+  display:flex; justify-content:space-between; align-items:center; padding:10px 20px; z-index: 9999; }
 
 .user-info { color: #77e38e; font-size: 0.9rem; font-weight: bold; }
 .logo { font-weight:bold; font-size:1.2rem; }

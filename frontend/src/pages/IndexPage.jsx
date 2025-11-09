@@ -4,8 +4,6 @@ import Button from '@/components/Button';
 import '@/styles/Pages.css';
 
 export default function IndexPage() {
-  const [userEmail, setUserEmail] = useState('');
-
   // Sesión de usuario (redirige a /home si no hay sesión)
   useEffect(() => {
     try {
@@ -14,9 +12,9 @@ export default function IndexPage() {
         window.location.hash = '/home';
         return;
       }
-      const parsed = JSON.parse(s);
-      setUserEmail(parsed?.email || '');
-    } catch {}
+      // const parsed = JSON.parse(s);
+      // userEmail is no longer needed here; header shows session via context
+    } catch (e) { console.error(e) }
   }, []);
 
   // ---------------- Maquinaria ----------------
@@ -32,11 +30,11 @@ export default function IndexPage() {
     try {
       const stored = localStorage.getItem('agroGestion_machinery');
       if (stored) setMachinery(JSON.parse(stored));
-    } catch {}
+  } catch (e) { console.error(e) }
   }, []);
 
   useEffect(() => {
-    try { localStorage.setItem('agroGestion_machinery', JSON.stringify(machinery)); } catch {}
+    try { localStorage.setItem('agroGestion_machinery', JSON.stringify(machinery)); } catch (e) { console.error(e) }
   }, [machinery]);
 
   const onPhotoChange = (e) => {
@@ -71,11 +69,11 @@ export default function IndexPage() {
     try {
       const stored = localStorage.getItem('agroGestion_breeds');
       if (stored) setBreeds(JSON.parse(stored));
-    } catch {}
+  } catch (e) { console.error(e) }
   }, []);
 
   useEffect(() => {
-    try { localStorage.setItem('agroGestion_breeds', JSON.stringify(breeds)); } catch {}
+    try { localStorage.setItem('agroGestion_breeds', JSON.stringify(breeds)); } catch (e) { console.error(e) }
   }, [breeds]);
 
   const handleBreedSubmit = (e) => {
@@ -145,13 +143,7 @@ export default function IndexPage() {
   };
 
   // ---------------- Logout ----------------
-  const handleLogout = (e) => {
-    e && e.preventDefault();
-    if (window.confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-      localStorage.removeItem('agroGestion_session');
-      window.location.hash = '/home';
-    }
-  };
+  // Logout handled by MainLayout; no local handler here
 
   return (
     <div>
