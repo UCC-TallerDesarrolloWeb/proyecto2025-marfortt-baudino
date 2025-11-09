@@ -4,7 +4,7 @@ import { useSession } from '@/contexts/session';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
-import '@/styles/Pages.css';
+import '@/styles/Pages.scss';
 
 export default function HomePage() {
   const navigate = useNavigate();

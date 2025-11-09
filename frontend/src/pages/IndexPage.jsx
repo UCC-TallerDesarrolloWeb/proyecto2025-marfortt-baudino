@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import WeatherPicker from '@/widgets/WeatherPicker';
 import Button from '@/components/Button';
-import '@/styles/Pages.css';
+import '@/styles/Pages.scss';
 
 export default function IndexPage() {
   // Sesión de usuario (redirige a /home si no hay sesión)
@@ -24,14 +24,12 @@ export default function IndexPage() {
   const [mPrice, setMPrice] = useState('');
   const [mNotes, setMNotes] = useState('');
   const [mPhoto, setMPhoto] = useState(null); // data URL
-  const [machinery, setMachinery] = useState([]);
-
-  useEffect(() => {
+  const [machinery, setMachinery] = useState(() => {
     try {
       const stored = localStorage.getItem('agroGestion_machinery');
-      if (stored) setMachinery(JSON.parse(stored));
-  } catch (e) { console.error(e) }
-  }, []);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) { console.error(e); return []; }
+  });
 
   useEffect(() => {
     try { localStorage.setItem('agroGestion_machinery', JSON.stringify(machinery)); } catch (e) { console.error(e) }
@@ -63,14 +61,12 @@ export default function IndexPage() {
   const [bType, setBType] = useState('');
   const [bName, setBName] = useState('');
   const [bInitial, setBInitial] = useState('0');
-  const [breeds, setBreeds] = useState([]);
-
-  useEffect(() => {
+  const [breeds, setBreeds] = useState(() => {
     try {
       const stored = localStorage.getItem('agroGestion_breeds');
-      if (stored) setBreeds(JSON.parse(stored));
-  } catch (e) { console.error(e) }
-  }, []);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) { console.error(e); return []; }
+  });
 
   useEffect(() => {
     try { localStorage.setItem('agroGestion_breeds', JSON.stringify(breeds)); } catch (e) { console.error(e) }

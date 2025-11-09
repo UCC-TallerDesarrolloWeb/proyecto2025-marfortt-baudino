@@ -50,7 +50,6 @@ input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px
 .auth-form.active { display:block; }
 .auth-message { display:none; }
 
-
 .file-label { display:block; margin-top:6px; font-size:0.95rem; color:#333; }
 
 @media (max-width: 600px) {
@@ -66,7 +65,7 @@ input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px
   .preview-grid { grid-template-columns: 1fr; }
 }
 
-/* Modal de confirmación (copied from pages/styles.css) */
+/* Modal de confirmación */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -187,3 +186,4 @@ input, select { display:block; width:100%; margin:6px 0; padding:8px; border:1px
   .modal-footer { flex-direction: column; }
   .modal-footer .btn { width: 100%; margin: 0; }
 }
+
